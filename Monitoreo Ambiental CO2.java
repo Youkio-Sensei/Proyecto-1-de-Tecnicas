@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class EnvironmentalMonitoringSystem extends JFrame {
+public class MonitoreoAmbientalCO2 extends JFrame {
     private JLabel tempLabel, humidityLabel, co2Label, avgTempLabel, avgHumidityLabel, avgCo2Label, alertLabel;
     private JButton readSensorsButton, calculateAveragesButton, saveDataButton, loadDataButton, setThresholdsButton,
             generateReportButton;
@@ -18,7 +18,7 @@ public class EnvironmentalMonitoringSystem extends JFrame {
     private double co2Threshold = 1000.0;
     private Random random = new Random();
 
-    public EnvironmentalMonitoringSystem() {
+    public MonitoreoAmbientalCO2() {
         setTitle("Sistema de Monitoreo Ambiental");
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -210,7 +210,7 @@ public class EnvironmentalMonitoringSystem extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            new EnvironmentalMonitoringSystem().setVisible(true);
+            new MonitoreoAmbientalCO2().setVisible(true);
         });
     }
 }
