@@ -1,0 +1,71 @@
+INICIO
+    // Inicialización
+    Crear ventana principal (JFrame) con título "Sistema de Monitoreo Ambiental"
+    Configurar tamaño, layout y colores de la interfaz
+    Inicializar listas para datos: tempData, humidityData, co2Data
+    Inicializar umbrales predeterminados: tempThreshold = 25.0, humidityThreshold = 60.0, co2Threshold = 1000.0
+    Crear componentes UI: etiquetas, botones, área de texto
+    Asignar ActionListeners a botones para manejar clics
+    Mostrar ventana
+
+    // Bucle principal (manejo de eventos, ejecutado por Swing)
+    MIENTRAS la aplicación esté ejecutándose HACER
+        ESPERAR evento de usuario (clic en botón)
+        SI evento == "Leer Sensores" ENTONCES
+            Llamar función readSensors()
+        SINO SI evento == "Calcular Promedios" ENTONCES
+            Llamar función calculateAverages()
+        SINO SI evento == "Guardar Datos" ENTONCES
+            Llamar función saveData()
+        SINO SI evento == "Cargar Datos" ENTONCES
+            Llamar función loadData()
+        SINO SI evento == "Configurar Umbrales" ENTONCES
+            Llamar función setThresholds()
+        SINO SI evento == "Generar Reporte" ENTONCES
+            Llamar función generateReport()
+        FIN SI
+    FIN MIENTRAS
+FIN
+
+// Funciones auxiliares
+FUNCIÓN readSensors()
+    Generar valores aleatorios: temp (20-40°C), humidity (30-80%), co2 (400-1600 ppm)
+    Agregar valores a listas de datos
+    Actualizar etiquetas de UI con valores actuales
+    Llamar checkAlerts(temp, humidity, co2)
+
+FUNCIÓN calculateAverages()
+    SI listas de datos están vacías ENTONCES
+        Mostrar mensaje de error
+        RETORNAR
+    FIN SI
+    Calcular promedios usando streams de Java
+    Actualizar etiquetas de promedios en UI
+
+FUNCIÓN saveData()
+    Intentar abrir archivo "environmental_data.txt" para escritura
+    Escribir encabezado y datos en formato CSV
+    Mostrar mensaje de éxito o error
+
+FUNCIÓN loadData()
+    Limpiar listas de datos
+    Intentar abrir archivo "environmental_data.txt" para lectura
+    Leer líneas, parsear valores y agregar a listas
+    Mostrar mensaje de éxito o error
+
+FUNCIÓN setThresholds()
+    Mostrar diálogos de entrada para nuevos umbrales
+    Parsear entradas a double y actualizar variables de umbrales
+    Mostrar mensaje de confirmación o error
+
+FUNCIÓN generateReport()
+    Construir string de reporte con total de lecturas y promedios
+    Mostrar reporte en área de texto de UI
+
+FUNCIÓN checkAlerts(temp, humidity, co2)
+    Inicializar string de alertas vacío
+    SI temp > tempThreshold ENTONCES agregar "Temperatura alta"
+    SI humidity > humidityThreshold ENTONCES agregar "Humedad alta"
+    SI co2 > co2Threshold ENTONCES agregar "CO₂ alto"
+    SI no hay alertas ENTONCES agregar "Ninguna"
+    Actualizar etiqueta de alertas en UI
